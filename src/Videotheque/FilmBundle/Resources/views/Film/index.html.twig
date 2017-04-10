@@ -1,0 +1,74 @@
+{% extends "VideothequeFilmBundle::layout.html.twig" %}
+{% block contenu %}
+    <h2>La liste des films</h2>
+    <table class="table">
+    <thead>
+      <tr>
+          <th>Id</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody
+     {% for film in films %}
+      <tr>
+        <td>{{film.id}}</td>
+        <td>{{film.titre}}</td>
+        <td>{{film.description}}</td>
+        <td><span><a href="{{path('film_detail',{"id":film.id})}}">View</a>
+            <a href="{{path('film_modifier',{"id":film.id})}}"><i class="material-icons">&#xe3c9;</i></a>
+            <a data-toggle="modal" data-target="#modal" class="LienModal" rel="{{film.id}}" href="{{path('film_supprimer',{"id":film.id})}}"><i class="material-icons">&#xe872;</i></a></span>
+        </td>
+      </tr>
+      {% endfor %}
+      <tr><td colspan="4"><a href="{{path('film_ajouter')}}" class="btn btn-primary">Ajouter un film</a></td></tr>
+    </tbody>
+  </table>
+  
+      <!-- Event Modal -->
+        <div id="modal" class="modal fade">
+        <div class="modal-dialog">
+        <div class="modal-content">
+
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Event</h4>
+        </div>
+        <div class="modal-body">
+        <p>Loading...</p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+
+        </div>
+        <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+        </div>
+      <!-- Event modal -->
+      
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+<script>
+
+    $("#.LienModal").click(function(){
+    var Id=$(this).attr("rel");
+    $(".modal-body").fadeIn(1000).html('<div style="text-align:center; margin-right:auto; margin-left:auto">Patientez...</div>');
+  {#  $.ajax({
+        type:"POST",
+        data:{Id : Id},
+        url:"reponse.php",
+        error:function(msg){
+        $(".modal-body").addClass("tableau_msg_erreur").fadeOut(800).fadeIn(800).fadeOut(400).fadeIn(400).html('<div style="margin-right:auto; margin-left:auto; text-align:center">Impossible de charger cette page</div>');
+        },
+        success:function(data){
+       // $(".modal-body").fadeIn(1000).html(data);
+        }
+    });#}
+    });
+</script>
+{% endblock %}
+

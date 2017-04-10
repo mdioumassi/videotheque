@@ -1,3 +1,24 @@
-videotheque_film_homepage:
+
+film_home:
     path:     /
-    defaults: { _controller: VideothequeFilmBundle:Default:index }
+    defaults: { _controller: VideothequeFilmBundle:Film:index }
+
+film_ajouter:
+    path:     /ajouter
+    defaults: { _controller: VideothequeFilmBundle:Film:ajout }
+
+film_modifier:
+    path:     /modifier/{id}
+    defaults: { _controller: VideothequeFilmBundle:Film:modifier }
+
+film_supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: VideothequeFilmBundle:Film:supprimer }
+
+film_detail:
+    path:     /detail
+    defaults: { _controller: VideothequeFilmBundle:Film:detail }
+    
+film_recherche:
+    path:    /recherche
+    defaults: { _controller: VideothequeFilmBundle:Film:recherche}

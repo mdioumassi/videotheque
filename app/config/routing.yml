@@ -1,6 +1,6 @@
 videotheque_film:
     resource: "@VideothequeFilmBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /film
 
 videotheque_core:
     resource: "@VideothequeCoreBundle/Resources/config/routing.yml"
